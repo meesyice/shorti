@@ -9,17 +9,17 @@ def check_hash(hashed_url, url):
     password, salt = hashed_url.split(':')
     return password == hashlib.sha256(salt.encode() + url.encode()).hexdigest
 
-def short_url(hashed_url):
-    shorturl = hashed_url[0:5]
-    if exists(shorturl):
-        shorturl = short_url(hashed_url[5:])
-        save(shorturl,hashed_url)
-        return shorturl
+def shorten_url(hashed_url):
+    short_url = hashed_url[0:5]
+    if exists(short_url):
+        short_url = shorten_url(hashed_url[5:])
+        save(short_url,hashed_url)
+        return short_url
     else:
-        return shorturl
+        return short_url
 
-def exists(shorturl):
+def exists(short_url):
     return
 
-def save(shorturl,hashed_url):
+def save(short_url,hashed_url):
     return
