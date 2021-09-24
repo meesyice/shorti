@@ -10,13 +10,19 @@ def check_hash(hashed_url, url):
     return password == hashlib.sha256(salt.encode() + url.encode()).hexdigest
 
 def shorten_url(hashed_url):
-    short_url = hashed_url[0:5]
-    if exists(short_url):
-        short_url = shorten_url(hashed_url[5:])
-        save(short_url,hashed_url)
-        return short_url
-    else:
-        return short_url
+    n = 5
+    short_url = hashed_url[0:n]
+
+    while(exists(short_url)):
+        i = n
+        n += 5
+        short_url = hashed_url[i:n]
+
+    save(short_url,hashed_url)
+    return short_url
+
+def shorten(url):
+    return "andy.com/" + shorten_url(hash_url(url))
 
 def exists(short_url):
     return
