@@ -1,19 +1,19 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from shortner import shorten
 from db import init
 
 app = Flask(__name__)
 
 @app.route('/')
-@app.route('/home')
+@app.route('/home/')
 def home():
     return render_template('home.html')
 
-@app.route('/urlshortner')
+@app.route('/urlshortner/')
 def urlshortner():
-    url = request.args.get('city')
-    res = shorten(url)
-    return render_template('result.html', data=res)
+    url = request.args.get('url')
+    data = shorten(url)
+    return render_template('result.html', data=data)
 
 if __name__ == '__main__':
     init()
