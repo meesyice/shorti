@@ -25,6 +25,3 @@ def shorten(url):
     short_url = shorten_url(hashed_url)
     save(short_url, url, hashed_url)
     return ("andy.com/" + short_url)
-
-x = "www.youtube.com"
-shorten(x)

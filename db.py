@@ -35,5 +35,3 @@ def save(short_url, url, hashed_url):
     VALUES ( ?, ?, ?, 0, ?);
     ''',(short_url, url, hashed_url, date))
     db.commit()
-
-init()
