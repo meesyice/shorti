@@ -9,6 +9,15 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
+@app.route('/result/', methods=['GET', 'POST'])
+def result():
+    if request.method == 'POST':
+        print(request.form.get('url'))
+        x = shorten(request.form.get('url'))
+        return render_template('result.html',short_url=x)
+    elif request.method == 'GET':
+        return redirect(url_for('home'))
+
 @app.route('/urlshortner/')
 def urlshortner():
     url = request.args.get('url')

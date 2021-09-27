@@ -24,4 +24,4 @@ def shorten(url):
     hashed_url = hash_url(url)
     short_url = shorten_url(hashed_url)
     save(short_url, url, hashed_url)
-    return ("150.230.20.164/" + short_url)
+    return ("shorti.xyz/" + short_url)
