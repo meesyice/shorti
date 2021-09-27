@@ -50,6 +50,7 @@ def get_url(short_url):
     fetch = dbcursor.execute('''
                 SELECT URL FROM URLs WHERE Short_url = :shrturl
                 ''', {'shrturl':short_url}).fetchall()
+    db.commit()
     return fetch[0][0]
 
 print(get_url('41a01'))
