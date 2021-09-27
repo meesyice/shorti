@@ -1,5 +1,6 @@
 import uuid
 import hashlib
+from db import exists,save
 
 def hash_url(url):
     salt = uuid.uuid4().hex
@@ -17,15 +18,13 @@ def shorten_url(hashed_url):
         i = n
         n += 5
         short_url = hashed_url[i:n]
-
-    save(short_url,hashed_url)
     return short_url
 
 def shorten(url):
-    return "andy.com/" + shorten_url(hash_url(url))
+    hashed_url = hash_url(url)
+    short_url = shorten_url(hashed_url)
+    save(short_url, url, hashed_url)
+    return ("andy.com/" + short_url)
 
-def exists(short_url):
-    return
-
-def save(short_url,hashed_url):
-    return
+x = "www.youtube.com"
+shorten(x)
