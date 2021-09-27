@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from shortner import shorten
-from db import init
+from db import init, get_url
 
 app = Flask(__name__)
 
@@ -18,11 +18,13 @@ def result():
     elif request.method == 'GET':
         return redirect(url_for('home'))
 
-@app.route('/urlshortner/')
-def urlshortner():
-    url = request.args.get('url')
-    data = shorten(url)
-    return render_template('result.html', data=data)
+@app.route('/<shorti>')
+def redir(shorti):
+    url = get_url(shorti)
+    if not url:
+        return render_template('error.html')
+    else:
+        return redirect('http://' + url)
 
 if __name__ == '__main__':
     init()
