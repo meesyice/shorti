@@ -29,6 +29,14 @@ def redir(shorti):
         else:
             return redirect('http://' + url)
 
+@app.route('/.well-known/pki-validation/93FE94C8A081732F4626DDE330BA7D18.txt')
+def ssl():
+    return '''
+    D11E4FE1BF9C546D39BF2AAEF4AFF33875DA2158071F74916AF15977DD0818AF
+    comodoca.com
+    45ea5bb18aee4a4
+    '''
+
 if __name__ == '__main__':
     init()
     app.run(debug=True, host='0.0.0.0', port=80)
