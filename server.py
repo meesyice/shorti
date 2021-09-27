@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, send_file
 from shortner import shorten
 from db import init, get_url
 
@@ -31,11 +31,7 @@ def redir(shorti):
 
 @app.route('/.well-known/pki-validation/93FE94C8A081732F4626DDE330BA7D18.txt')
 def ssl():
-    return '''
-    D11E4FE1BF9C546D39BF2AAEF4AFF33875DA2158071F74916AF15977DD0818AF
-    comodoca.com
-    45ea5bb18aee4a4
-    '''
+    return send_file('93FE94C8A081732F4626DDE330BA7D18.txt')
 
 if __name__ == '__main__':
     init()
