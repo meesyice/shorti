@@ -24,7 +24,10 @@ def redir(shorti):
     if not url:
         return render_template('error.html')
     else:
-        return redirect('http://' + url)
+        if url.startswith("http"):
+            return redirect(url)
+        else:
+            return redirect('http://' + url)
 
 if __name__ == '__main__':
     init()
