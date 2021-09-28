@@ -1,0 +1,3 @@
+Allow: /home/
+Allow: /
+
