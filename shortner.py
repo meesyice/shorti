@@ -27,13 +27,15 @@ def shorten_url(hashed_url):
     return short_url
 
 def shorten(url):
+    if '://' not in url:
+        url = 'http://' + url
     hashed_url = hash_url(url)
     short_url = shorten_url(hashed_url)
     save(short_url, url, hashed_url)
     return ("shorti.xyz/" + short_url)
 
 def valid(url):
-    if not validators.domain(url):
-        return False
-    else:
+    if validators.domain(url) or validators.url(url):
         return True
+    else:
+        return False
