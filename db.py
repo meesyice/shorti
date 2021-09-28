@@ -52,5 +52,3 @@ def get_url(short_url):
                 ''', {'shrturl':short_url}).fetchall()
     db.commit()
     return fetch[0][0]
-
-print(get_url('41a01'))

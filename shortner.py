@@ -1,5 +1,6 @@
 import uuid
 import hashlib
+import validators
 from db import exists,save
 
 def hash_url(url):
@@ -25,3 +26,9 @@ def shorten(url):
     short_url = shorten_url(hashed_url)
     save(short_url, url, hashed_url)
     return ("shorti.xyz/" + short_url)
+
+def valid(url):
+    if not validators.domain(url):
+        return False
+    else:
+        return True

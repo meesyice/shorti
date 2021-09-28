@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, send_file
-from shortner import shorten
+from shortner import shorten, valid
 from db import init, get_url
 
 app = Flask(__name__)
@@ -12,9 +12,12 @@ def home():
 @app.route('/result/', methods=['GET', 'POST'])
 def result():
     if request.method == 'POST':
-        print(request.form.get('url'))
-        x = shorten(request.form.get('url'))
-        return render_template('result.html',short_url=x)
+        url = request.form.get('url')
+        if valid(url):
+            x = shorten(url)
+            return render_template('result.html',short_url=x)
+        else:
+            return render_template('erorr.html')
     elif request.method == 'GET':
         return redirect(url_for('home'))
 
