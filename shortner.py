@@ -12,12 +12,12 @@ def check_hash(hashed_url, url):
     return password == hashlib.sha256(salt.encode() + url.encode()).hexdigest
 
 def shorten_url(hashed_url):
-    n = 5
+    n = 6
     short_url = hashed_url[0:n]
 
     while(exists(short_url)):
         i = n
-        n += 5
+        n += 6
         short_url = hashed_url[i:n]
     return short_url
 
