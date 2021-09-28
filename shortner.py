@@ -1,6 +1,7 @@
 import uuid
 import hashlib
 import validators
+from random import randint, random
 from db import exists,save
 
 def hash_url(url):
@@ -12,13 +13,17 @@ def check_hash(hashed_url, url):
     return password == hashlib.sha256(salt.encode() + url.encode()).hexdigest
 
 def shorten_url(hashed_url):
-    n = 6
-    short_url = hashed_url[0:n]
+    i = randint(5,6)
+    j = i
+    n = 0
+    short_url = hashed_url[n:i]
 
     while(exists(short_url)):
-        i = n
-        n += 6
-        short_url = hashed_url[i:n]
+        j += i
+        n += i
+        if j > len(hashed_url):
+            return short_url.upper()
+        short_url = hashed_url[n:j]
     return short_url
 
 def shorten(url):
