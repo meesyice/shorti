@@ -33,7 +33,7 @@ def shorten(url):
     return ("shorti.xyz/" + short_url)
 
 def valid(url):
-    if not validators.domain(url):
-        return False
-    else:
+    if validators.domain(url) or validators.url(url):
         return True
+    else:
+        return False
