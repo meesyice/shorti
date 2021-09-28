@@ -25,7 +25,7 @@ def result():
 def redir(shorti):
     url = get_url(shorti)
     if not url:
-        return render_template('error.html')
+        return home()
     else:
         if url.startswith("http"):
             return redirect(url)
