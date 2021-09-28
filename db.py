@@ -19,6 +19,7 @@ def init():
             PRIMARY KEY (Short_url)
         )
     ''')
+    db.commit()
 
 def exists(short_url):
     db, dbcursor = connect()
