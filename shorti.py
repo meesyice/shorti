@@ -17,7 +17,7 @@ def result():
             x = shorten(url)
             return render_template('result.html',short_url=x)
         else:
-            return render_template('erorr.html')
+            return render_template('wrongurl.html')
     elif request.method == 'GET':
         return redirect(url_for('home'))
 
