@@ -32,10 +32,6 @@ def redir(shorti):
         else:
             return redirect('http://' + url)
 
-@app.route('/.well-known/pki-validation/93FE94C8A081732F4626DDE330BA7D18.txt')
-def ssl():
-    return send_file('93FE94C8A081732F4626DDE330BA7D18.txt')
-
 if __name__ == '__main__':
     init()
     app.run(debug=True, host='0.0.0.0', port=80)
