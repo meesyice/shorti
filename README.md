@@ -1,4 +1,4 @@
-# Shorti.xyz    
+# Shorti   
 a Flask app to shorten URLs.  
   
 Current Goals:  
