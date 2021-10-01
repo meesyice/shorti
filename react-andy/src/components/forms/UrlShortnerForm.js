@@ -1,19 +1,16 @@
 import { useRef } from "react";
-
 import classes from "./Form.module.css";
 
-function UrlShortnerForm() {
+function UrlShortnerForm(props) {
   const urlInputRef = useRef();
 
   function UrlShortnerFormHandler(event) {
     event.preventDefault();
     const enteredUrl = urlInputRef.current.value;
-
-    const UrlShortnerData = {
+    const urlShortnerData = {
       url: enteredUrl,
     };
-
-    console.log(UrlShortnerData)
+    props.onShortenUrl(urlShortnerData);
   }
   return (
     //<InputBar />

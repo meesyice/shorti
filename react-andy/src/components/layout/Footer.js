@@ -32,6 +32,7 @@ function Footer() {
           </li>
         </ul>
         <div>© 2021 Shorti.xyz - Tool to shorten long URLs.</div>
+        <div>Made with <span className={classes.heart}>&#10084;</span> in Amman</div>
       </div>
     </footer>
   );

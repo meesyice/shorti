@@ -17,10 +17,10 @@ function ContactForm() {
     const contactData = {
       name: enteredName,
       email: enteredEmail,
-      message : enteredMessage,
+      message: enteredMessage,
     };
 
-    console.log(contactData)
+    console.log(contactData);
   }
 
   return (

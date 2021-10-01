@@ -1,36 +1,56 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask,request, redirect, jsonify, make_response
+from flask_cors import CORS
 from shortner import shorten, valid
 from db import init, get_url
 
 app = Flask(__name__)
+cors = CORS(app)
 
-@app.route('/')
-@app.route('/home/')
-def home():
-    return render_template('home.html')
-
-@app.route('/shortener/', methods=['GET', 'POST'])
+@app.route('/shortener/', methods=['POST', 'OPTIONS'])
 def shortner():
-    if request.method == 'POST':
-        url = request.form.get('url')
+    if request.method == 'OPTIONS':
+        return _build_cors_preflight_response()
+    elif request.method == 'POST':
+        urldata = request.get_json(force=True)
+        if not urldata:
+            return _corsify_actual_response(jsonify({'shorti' : 'invalid-data-format'})), 400
+        else:
+            url = urldata['url']
         if valid(url):
             x = shorten(url)
-            return {'shorti' : x}
+            return _corsify_actual_response(jsonify({'shorti' : x})) , 201
         else:
-            return {'shorti' : None}
-    elif request.method == 'GET':
-        return None
-
-@app.route('/<shorti>')
-def redir(shorti):
-    url = get_url(shorti)
-    if not url:
-        return home()
+            return _corsify_actual_response(jsonify({'shorti' : 'invalid-url'})), 400
     else:
-        if url.startswith("http"):
-            return redirect(url)
+        return _corsify_actual_response(jsonify({'shorti' : 'unkown-error'})), 400
+
+@app.route('/<shorti>', methods=['GET', 'OPTIONS'])
+def redir(shorti):
+    if request.method == 'OPTIONS':
+        return _build_cors_preflight_response()
+    elif request.method == 'GET': 
+        url = get_url(shorti)
+        if not url:
+            return _corsify_actual_response(jsonify({'shorti' : 'invalid-url'})), 400
         else:
-            return redirect('http://' + url)
+            if url.startswith("http"):
+                return _corsify_actual_response(redirect(url, 301))
+            else:
+                return _corsify_actual_response(redirect('http://' + url, 301))
+    else:
+        return _corsify_actual_response(jsonify({'shorti' : 'unkown-error'})), 400
+
+
+def _build_cors_preflight_response():
+    response = make_response()
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add('Access-Control-Allow-Headers', "*")
+    response.headers.add('Access-Control-Allow-Methods', "*")
+    return response
+
+def _corsify_actual_response(response):
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 if __name__ == '__main__':
     init()

@@ -1,6 +1,5 @@
 import { useRef } from "react";
 
-
 import classes from "./Form.module.css";
 
 function NumberOfClicks() {

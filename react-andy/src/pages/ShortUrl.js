@@ -1,5 +1,5 @@
 function ShortUrl() {
-  return;
+  return(<div>Place Holder</div>);
 }
 
 export default ShortUrl;

@@ -1,5 +1,5 @@
 function InvalidUrl() {
-  return;
+  return(<div>Place Holder</div>);
 }
 
 export default InvalidUrl;
