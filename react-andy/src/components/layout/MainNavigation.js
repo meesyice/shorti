@@ -12,7 +12,7 @@ function MainNavigation() {
             <Link to="/">URL Shortner</Link>
           </li>
           <li>
-            <Link to="/ClickTracker">URL Click Counter</Link>
+            <Link to="/ClickTracker">URL Click Tracker</Link>
           </li>
           <li>
             <Link to="/ReportUrl">Report Malicious URL</Link>

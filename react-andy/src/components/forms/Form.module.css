@@ -45,5 +45,5 @@
 }
 
 .textarea {
-  resize: vertical;
+  resize: none;
 }

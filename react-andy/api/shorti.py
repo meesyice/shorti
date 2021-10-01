@@ -9,17 +9,17 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route('/result/', methods=['GET', 'POST'])
-def result():
+@app.route('/shortener/', methods=['GET', 'POST'])
+def shortner():
     if request.method == 'POST':
         url = request.form.get('url')
         if valid(url):
             x = shorten(url)
-            return render_template('result.html',short_url=x)
+            return {'shorti' : x}
         else:
-            return render_template('wrongurl.html')
+            return {'shorti' : None}
     elif request.method == 'GET':
-        return redirect(url_for('home'))
+        return None
 
 @app.route('/<shorti>')
 def redir(shorti):

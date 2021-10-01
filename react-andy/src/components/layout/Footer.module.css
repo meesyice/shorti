@@ -1,0 +1,24 @@
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    text-align: center;
+    font: 16px asap,arial,tahoma;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    width: 100%;
+    padding: 20px 0 100px;
+    line-height: 1.5;
+    display: block;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+footer ul {
+    display: inline-block;
+    list-style: none;
+}
+
+footer ul li {
+    display: inline;
+    padding: 4px;
+}

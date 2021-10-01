@@ -1,8 +1,8 @@
 import classes from "./Pages.module.css";
 
-import ReportUrlForm from "../components/forms/ReportUrlForm";
+import ContactForm from "../components/forms/ContactForm";
 
-function ReportUrl() {
+function Contact() {
   return (
     <section>
       <h3
@@ -13,11 +13,11 @@ function ReportUrl() {
           alignItems: "center",
         }}
       >
-        Report a Malicious Shorti URL
+        Send us a Message
       </h3>
-      <ReportUrlForm />
+      <ContactForm />
     </section>
   );
 }
 
-export default ReportUrl;
+export default Contact;

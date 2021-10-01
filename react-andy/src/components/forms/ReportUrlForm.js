@@ -1,22 +1,47 @@
+import { useRef } from "react";
+
 import classes from "./Form.module.css";
 import Card from "../ui/Card";
 
 function ReportUrlForm() {
+  const maliciousUrlInputRef = useRef();
+  const commentInputRef = useRef();
+
+  function ReportUrlFormHandler(event) {
+    event.preventDefault();
+    const enteredMaliciousUrl = maliciousUrlInputRef.current.value;
+    const enteredComment = commentInputRef.current.value;
+
+    const contactData = {
+      name: enteredMaliciousUrl,
+      email: enteredComment,
+    };
+
+    console.log(contactData);
+  }
+
   return (
     <Card>
-      <form className={classes.form}>
+      <form className={classes.form} onSubmit={ReportUrlFormHandler}>
         <div className={classes.control}>
-          <label htmlFor="description">Invalid or malicious URL</label>
+          <label htmlFor="maliciousUrl">Invalid or malicious URL</label>
           <input
             type="text"
             required
-            id="malicious-url"
+            id="maliciousUrl"
+            ref={maliciousUrlInputRef}
             placeholder="shorti.xyz/abc123"
           />
         </div>
         <div className={classes.control}>
-          <label htmlFor="description">Comment</label>
-          <textarea className={classes.textarea} id="Comment" required rows="5"></textarea>
+          <label htmlFor="comment">Comment</label>
+          <textarea
+            className={classes.textarea}
+            required
+            id="Comment"
+            ref={commentInputRef}
+            rows="5"
+          ></textarea>
         </div>
         <div className={classes.actions}>
           <button>Send</button>
