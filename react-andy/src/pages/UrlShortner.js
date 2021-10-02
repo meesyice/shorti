@@ -1,17 +1,27 @@
-import { useHistory } from 'react-router-dom'
-
 import classes from "./Pages.module.css";
 import UrlShortnerForm from "../components/forms/UrlShortnerForm";
+import ShortUrlCard from "./cards/ShortUrlCard";
 import Card from "../components/ui/Card";
 import axios from "axios";
+import SERVER_ENDPOINT from "../api";
+import { useState } from 'react'
 
 function UrlShortner() {
+  const [ data, setData ] = useState('')
+  const[ cardIsShown, setCardIsShown ] = useState(false);
   function ShortenUrlHandler(urlShortnerData) {
     const payload = JSON.stringify(urlShortnerData);
-    axios.post("http://127.0.0.1:5000/shortener/", payload).then().catch();
+    axios
+      .post(SERVER_ENDPOINT() + "/shortener/", payload)
+      .then((response) => {DisplayCardHandler();setData(response.data);console.log(data)})
+      .catch()
   }
-  
+  function DisplayCardHandler(){
+    setCardIsShown(true);
+  }
+
   return (
+    <div>
     <Card>
       <section>
         <h1
@@ -27,6 +37,8 @@ function UrlShortner() {
         <UrlShortnerForm onShortenUrl={ShortenUrlHandler} />
       </section>
     </Card>
+    {cardIsShown && <ShortUrlCard shorti={data}/>}
+    </div>
   );
 }
 

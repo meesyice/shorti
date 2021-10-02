@@ -6,39 +6,39 @@ from db import init, get_url
 app = Flask(__name__)
 cors = CORS(app)
 
-@app.route('/shortener/', methods=['POST', 'OPTIONS'])
+@app.route('/api/shortener/', methods=['POST', 'OPTIONS'])
 def shortner():
     if request.method == 'OPTIONS':
         return _build_cors_preflight_response()
     elif request.method == 'POST':
         urldata = request.get_json(force=True)
         if not urldata:
-            return _corsify_actual_response(jsonify({'shorti' : 'invalid-data-format'})), 400
+            return _corsify_actual_response(jsonify('invalid-data-format')), 400
         else:
             url = urldata['url']
         if valid(url):
-            x = shorten(url)
-            return _corsify_actual_response(jsonify({'shorti' : x})) , 201
+            shorti = shorten(url)
+            return _corsify_actual_response(jsonify(shorti)) , 201
         else:
-            return _corsify_actual_response(jsonify({'shorti' : 'invalid-url'})), 400
+            return _corsify_actual_response(jsonify('invalid-url')), 400
     else:
-        return _corsify_actual_response(jsonify({'shorti' : 'unkown-error'})), 400
+        return _corsify_actual_response(jsonify('unkown-error')), 400
 
-@app.route('/<shorti>', methods=['GET', 'OPTIONS'])
+@app.route('/api/url/<shorti>', methods=['GET', 'OPTIONS'])
 def redir(shorti):
     if request.method == 'OPTIONS':
         return _build_cors_preflight_response()
     elif request.method == 'GET': 
         url = get_url(shorti)
         if not url:
-            return _corsify_actual_response(jsonify({'shorti' : 'invalid-url'})), 400
+            return _corsify_actual_response(jsonify('invalid-url')), 400
         else:
             if url.startswith("http"):
                 return _corsify_actual_response(redirect(url, 301))
             else:
                 return _corsify_actual_response(redirect('http://' + url, 301))
     else:
-        return _corsify_actual_response(jsonify({'shorti' : 'unkown-error'})), 400
+        return _corsify_actual_response(jsonify('unkown-error')), 400
 
 
 def _build_cors_preflight_response():

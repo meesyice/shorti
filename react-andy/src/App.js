@@ -4,32 +4,16 @@ import UrlShortner from "./pages/UrlShortner";
 import NumberOfClicks from "./pages/NumberOfClicks";
 import ReportUrl from "./pages/ReportUrl";
 import Contact from "./pages/Contact";
-import InvalidUrl from "./pages/InvalidUrl";
-import ShortUrl from "./pages/ShortUrl";
 import Layout from "./components/layout/Layout";
 
 function App() {
   return (
     <Layout>
       <Switch>
-        <Route path="/" exact>
-          <UrlShortner />
-        </Route>
-        <Route path="/ClickTracker" exact>
-          <NumberOfClicks />
-        </Route>
-        <Route path="/ReportUrl" exact>
-          <ReportUrl />
-        </Route>
-        <Route path="/Contact">
-          <Contact />
-        </Route>
-        <Route path="/InvalidUrl">
-          <InvalidUrl />
-        </Route>
-        <Route path="/ShortUrl">
-          <ShortUrl />
-        </Route>
+        <Route exact path="/" component={UrlShortner} />
+        <Route exact path="/ClickTracker" component={NumberOfClicks} />
+        <Route exact path="/ReportUrl" component={ReportUrl} />
+        <Route exact path="/Contact" component={Contact} />
       </Switch>
     </Layout>
   );
