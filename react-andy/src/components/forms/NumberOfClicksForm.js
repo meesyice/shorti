@@ -2,18 +2,16 @@ import { useRef } from "react";
 
 import classes from "./Form.module.css";
 
-function NumberOfClicks() {
+function NumberOfClicks(props) {
   const shortiInputRef = useRef();
 
   function NumberofClicksHandler(event) {
     event.preventDefault();
     const enteredShorti = shortiInputRef.current.value;
-
-    const NumberOfClicksData = {
+    const numberOfClicksData = {
       shorti: enteredShorti,
     };
-
-    console.log(NumberOfClicksData);
+    props.onGetClicks(numberOfClicksData);
   }
   return (
     <form className={classes.form} onSubmit={NumberofClicksHandler}>
