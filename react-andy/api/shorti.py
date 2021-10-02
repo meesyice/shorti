@@ -36,9 +36,9 @@ def redir(shorti):
             return _corsify_actual_response(jsonify('invalid-url')), 400
         else:
             if url.startswith("http"):
-                return _corsify_actual_response(url), 301
+                return _corsify_actual_response(jsonify(url)), 200
             else:
-                return _corsify_actual_response('http://' + url), 301
+                return _corsify_actual_response(jsonify('http://' + url)), 200
     else:
         return _corsify_actual_response(jsonify('unkown-error')), 400
 

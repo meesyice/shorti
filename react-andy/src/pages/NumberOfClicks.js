@@ -2,6 +2,7 @@ import classes from "./Pages.module.css";
 import Card from "../components/ui/Card";
 import NumberOfClicksForm from "../components/forms/NumberOfClicksForm";
 import ClickCounterCard from "./cards/ClickCounterCard";
+import Layout from "../components/layout/Layout";
 import axios from "axios";
 import SERVER_ENDPOINT from "../api";
 import { useState } from "react";
@@ -25,24 +26,26 @@ function NumberOfClicks() {
     setCardIsShown(true);
   }
   return (
-    <div>
-    <Card>
-      <section>
-        <h1
-          className={classes.title}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          URL Click Tracker
-        </h1>
-        <NumberOfClicksForm onGetClicks={getClicksHandler} />
-      </section>
-    </Card>
-    {cardIsShown && <ClickCounterCard clicks={data}/>}
-    </div>
+    <Layout>
+      <div>
+        <Card>
+          <section>
+            <h1
+              className={classes.title}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              URL Click Tracker
+            </h1>
+            <NumberOfClicksForm onGetClicks={getClicksHandler} />
+          </section>
+        </Card>
+        {cardIsShown && <ClickCounterCard clicks={data} />}
+      </div>
+    </Layout>
   );
 }
 
