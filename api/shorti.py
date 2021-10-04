@@ -13,6 +13,7 @@ cors = CORS(app)
 def landing():
     return render_template('landing.html')
 
+
 @app.route('/api/shortener/', methods=['POST', 'OPTIONS'])
 def shortner():
     if request.method == 'OPTIONS':
