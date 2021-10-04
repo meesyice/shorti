@@ -13,7 +13,6 @@ function UrlShortnerForm(props) {
     props.onShortenUrl(urlShortnerData);
   }
   return (
-    //<InputBar />
     <form className={classes.form} onSubmit={UrlShortnerFormHandler}>
       <div className={classes.control}>
         <input

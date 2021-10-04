@@ -1,6 +1,7 @@
 import classes from "./Pages.module.css";
 import Card from "../components/ui/Card";
 import NumberOfClicksForm from "../components/forms/NumberOfClicksForm";
+import InvalidUrlCard from "./cards/InavlidUrlCard";
 import ClickCounterCard from "./cards/ClickCounterCard";
 import Layout from "../components/layout/Layout";
 import axios from "axios";
@@ -10,6 +11,7 @@ import { useState } from "react";
 function NumberOfClicks() {
   const [data, setData] = useState("");
   const [cardIsShown, setCardIsShown] = useState(false);
+  const [erorrIsShown, setErorrIsShown] = useState(false);
 
   function getClicksHandler(numberOfClicksData) {
     const payload = JSON.stringify(numberOfClicksData);
@@ -20,9 +22,16 @@ function NumberOfClicks() {
         setData(response.data);
         console.log(data);
       })
-      .catch();
+      .catch((e) => {
+        DisplayErorrHandler();
+      });
+  }
+  function DisplayErorrHandler() {
+    setCardIsShown(false);
+    setErorrIsShown(true);
   }
   function DisplayCardHandler() {
+    setErorrIsShown(false);
     setCardIsShown(true);
   }
   return (
@@ -44,6 +53,7 @@ function NumberOfClicks() {
           </section>
         </Card>
         {cardIsShown && <ClickCounterCard clicks={data} />}
+        {erorrIsShown && <InvalidUrlCard />}
       </div>
     </Layout>
   );

@@ -1,7 +1,7 @@
 import Card from "../../components/ui/Card";
 import classes from "./Cards.module.css";
 
-function ClickCounterCard(props) {
+function InvalidUrlCard() {
   return (
     <Card>
       <section className={classes.Card}>
@@ -13,21 +13,11 @@ function ClickCounterCard(props) {
             alignItems: "center",
           }}
         >
-          Your Shorti URL Was Clicked:
-        </h1>
-        <h1
-          className={classes}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-            {props.clicks / 3} Times
+          The URL is not valid
         </h1>
       </section>
     </Card>
   );
 }
 
-export default ClickCounterCard;
+export default InvalidUrlCard;

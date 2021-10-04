@@ -1,6 +1,7 @@
 import classes from "./Pages.module.css";
 import UrlShortnerForm from "../components/forms/UrlShortnerForm";
 import ShortUrlCard from "./cards/ShortUrlCard";
+import InvalidUrlCard from "./cards/InavlidUrlCard";
 import Card from "../components/ui/Card";
 import Layout from "../components/layout/Layout";
 import axios from "axios";
@@ -10,6 +11,8 @@ import { useState } from "react";
 function UrlShortner() {
   const [data, setData] = useState("");
   const [cardIsShown, setCardIsShown] = useState(false);
+  const [erorrIsShown, setErorrIsShown] = useState(false);
+
   function ShortenUrlHandler(urlShortnerData) {
     const payload = JSON.stringify(urlShortnerData);
     axios
@@ -19,12 +22,18 @@ function UrlShortner() {
         setData(response.data);
         console.log(data);
       })
-      .catch();
+      .catch((e) => {
+        DisplayErorrHandler();
+      });
+  }
+  function DisplayErorrHandler() {
+    setCardIsShown(false);
+    setErorrIsShown(true);
   }
   function DisplayCardHandler() {
+    setErorrIsShown(false);
     setCardIsShown(true);
   }
-
   return (
     <Layout>
       <div>
@@ -44,6 +53,7 @@ function UrlShortner() {
           </section>
         </Card>
         {cardIsShown && <ShortUrlCard shorti={data} />}
+        {erorrIsShown && <InvalidUrlCard />}
       </div>
     </Layout>
   );

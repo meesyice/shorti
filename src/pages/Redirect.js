@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
 import SERVER_ENDPOINT from "../api";
 import axios from "axios";
-import { useState, useEffect } from "react";
 
 function Redirect() {
   const history = useHistory();
