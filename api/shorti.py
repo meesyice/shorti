@@ -1,3 +1,4 @@
+from flask.templating import render_template
 from cors import _build_cors_preflight_response, _corsify_actual_response
 from flask import Flask, jsonify, request
 from shortner import shorten, valid
@@ -7,6 +8,10 @@ from db import get_url, get_clicks, exists
 app = Flask(__name__)
 cors = CORS(app)
 
+
+@app.route('/')
+def landing():
+    return render_template('landing.html')
 
 @app.route('/api/shortener/', methods=['POST', 'OPTIONS'])
 def shortner():
