@@ -1,15 +1,17 @@
 # Shorti.xyz
 
-|travis-badge|_ |mit-badge|_ |made-with-python|_
-
-.. |travis-badge| image:: https://travis-ci.org/GaetanoCarlucci/CPULoadGenerator.svg?branch=master
-.. _travis-badge: https://travis-ci.org/GaetanoCarlucci/CPULoadGenerator
-
-.. |mit-badge| image:: https://img.shields.io/:license-mit-green.svg?style=flat
-.. _mit-badge: http://opensource.org/licenses/MIT
-
-.. |made-with-python| image:: https://img.shields.io/badge/Made%20with-Python-1f425f.svg
-.. _made-with-python: https://www.python.org/
+</p>
+<p align="center">
+    <a>
+        <img src="https://travis-ci.org/GaetanoCarlucci/CPULoadGenerator.svg?branch=master" />
+    </a>
+    <a>
+        <img src="https://img.shields.io/:license-mit-green.svg?style=flat" />
+    </a>
+    <a>
+        <img src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg" />
+    </a>
+</p>
 
 
 ## Description:
@@ -19,7 +21,7 @@ The Frontend was bootstrapped with [Create React App](https://github.com/faceboo
 The Backend was created using Flask.
 
 ## Todo:
-### `-Migrate DB from Sqlite`
-### `-Add Dark mode`
-### `-Add Privacy and Terms`
-### `-Improve shortning alogrithm`
+  ### `-Migrate DB from Sqlite`
+  ### `-Add Dark mode`
+  ### `-Add Privacy and Terms`
+  ### `-Improve shortning alogrithm`
