@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Shorti.xyz
 
 </p>
@@ -26,4 +25,3 @@ The Backend was created using Flask.
   ### `-Add Dark mode`
   ### `-Add Privacy and Terms`
   ### `-Improve shortning alogrithm`
-=======
