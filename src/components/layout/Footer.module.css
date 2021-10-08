@@ -2,6 +2,7 @@ footer {
     position: absolute;
     bottom: 0;
     height: 40px;
+    margin-top: -40px;
     text-align: center;
     font: 16px asap,arial,tahoma;
     color: rgb(0, 0, 0);
