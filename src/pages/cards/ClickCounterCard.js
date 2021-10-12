@@ -23,7 +23,7 @@ function ClickCounterCard(props) {
             alignItems: "center",
           }}
         >
-            {props.clicks / 3} Times
+            {props.clicks} Times
         </h1>
       </section>
     </Card>
