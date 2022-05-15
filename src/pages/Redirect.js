@@ -8,7 +8,9 @@ function Redirect() {
   const [destination, setDestination] = useState("");
   const [error, setError] = useState();
   const shorti = history.location.pathname.toString();
-  axios
+
+  useEffect(() => {
+    axios
     .get(SERVER_ENDPOINT() + "/url" + shorti)
     .then((response) => {
       setDestination(response.data);
@@ -16,6 +18,8 @@ function Redirect() {
     .catch((e) => {
       setError(e.message);
     });
+  }, [shorti]);  
+
   useEffect(() => {
     if (destination) {
       window.location.replace(destination);

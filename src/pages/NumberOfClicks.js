@@ -13,16 +13,15 @@ function NumberOfClicks() {
   const [cardIsShown, setCardIsShown] = useState(false);
   const [erorrIsShown, setErorrIsShown] = useState(false);
 
-  function getClicksHandler(numberOfClicksData) {
+  async function getClicksHandler(numberOfClicksData) {
     const payload = JSON.stringify(numberOfClicksData);
-    axios
+    await axios
       .post(SERVER_ENDPOINT() + "/clicks/", payload)
       .then((response) => {
         DisplayCardHandler();
         setData(response.data);
-        console.log(data);
       })
-      .catch((e) => {
+      .catch((_e) => {
         DisplayErorrHandler();
       });
   }
