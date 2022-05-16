@@ -1,8 +1,8 @@
 import classes from "./Pages.module.css";
 import UrlShortnerForm from "../components/forms/UrlShortnerForm";
-import ShortUrlCard from "./cards/ShortUrlCard";
-import InvalidUrlCard from "./cards/InavlidUrlCard";
-import Card from "../components/ui/Card";
+import ShortUrlCard from "../components/cards/ShortUrlCard";
+import InvalidUrlCard from "../components/cards/InavlidUrlCard";
+import Card from "../components/cards/Card";
 import Layout from "../components/layout/Layout";
 import axios from "axios";
 import SERVER_ENDPOINT from "../api";
@@ -22,7 +22,7 @@ function UrlShortner() {
         setData(response.data);
         console.log(data);
       })
-      .catch((e) => {
+      .catch((_e) => {
         DisplayErorrHandler();
       });
   }
