@@ -2,6 +2,7 @@ import Card from "./Card";
 import classes from "./Cards.module.css";
 
 function ClickCounterCard(props) {
+  let times = (props.clicks === 1) ? "Time" : "Times"
   return (
     <Card>
       <section className={classes.Card}>
@@ -23,7 +24,7 @@ function ClickCounterCard(props) {
             alignItems: "center",
           }}
         >
-            {props.clicks} Times
+            {props.clicks} {times}
         </h1>
       </section>
     </Card>

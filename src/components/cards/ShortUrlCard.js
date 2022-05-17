@@ -23,7 +23,7 @@ function ShortUrlCard(props) {
             alignItems: "center",
           }}
         >
-          https://{props.shorti}
+          {props.shorti}
         </h1>
       </section>
     </Card>
