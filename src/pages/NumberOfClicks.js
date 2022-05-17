@@ -16,7 +16,7 @@ function NumberOfClicks() {
   async function getClicksHandler(numberOfClicksData) {
     const payload = JSON.stringify(numberOfClicksData);
     await axios
-      .post(SERVER_ENDPOINT() + "/clicks/", payload)
+      .post(SERVER_ENDPOINT() + "api/clicks/", payload)
       .then((response) => {
         DisplayCardHandler();
         setData(response.data);

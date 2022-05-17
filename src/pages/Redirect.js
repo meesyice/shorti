@@ -11,7 +11,7 @@ function Redirect() {
 
   useEffect(() => {
     axios
-    .get(SERVER_ENDPOINT() + "/url" + shorti)
+    .get(SERVER_ENDPOINT() + "api/url" + shorti)
     .then((response) => {
       setDestination(response.data);
     })

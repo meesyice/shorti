@@ -16,7 +16,7 @@ function UrlShortner() {
   function ShortenUrlHandler(urlShortnerData) {
     const payload = JSON.stringify(urlShortnerData);
     axios
-      .post(SERVER_ENDPOINT() + "/shortener/", payload)
+      .post(SERVER_ENDPOINT() + "api/shortener/", payload)
       .then((response) => {
         DisplayCardHandler();
         setData(response.data);
