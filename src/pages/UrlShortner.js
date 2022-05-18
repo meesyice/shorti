@@ -3,7 +3,6 @@ import UrlShortnerForm from "../components/forms/UrlShortnerForm";
 import ShortUrlCard from "../components/cards/ShortUrlCard";
 import InvalidUrlCard from "../components/cards/InavlidUrlCard";
 import Card from "../components/cards/Card";
-import Layout from "../components/layout/Layout";
 import axios from "axios";
 import SERVER_ENDPOINT from "../api";
 import { useState } from "react";
@@ -35,7 +34,6 @@ function UrlShortner() {
     setCardIsShown(true);
   }
   return (
-    <Layout>
       <div>
         <Card>
           <section>
@@ -55,7 +53,6 @@ function UrlShortner() {
         {cardIsShown && <ShortUrlCard shorti={data} />}
         {erorrIsShown && <InvalidUrlCard />}
       </div>
-    </Layout>
   );
 }
 

@@ -3,7 +3,6 @@ import Card from "../components/cards/Card";
 import NumberOfClicksForm from "../components/forms/NumberOfClicksForm";
 import InvalidUrlCard from "../components/cards/InavlidUrlCard";
 import ClickCounterCard from "../components/cards/ClickCounterCard";
-import Layout from "../components/layout/Layout";
 import axios from "axios";
 import SERVER_ENDPOINT from "../api";
 import { useState } from "react";
@@ -34,7 +33,6 @@ function NumberOfClicks() {
     setCardIsShown(true);
   }
   return (
-    <Layout>
       <div>
         <Card>
           <section>
@@ -54,7 +52,6 @@ function NumberOfClicks() {
         {cardIsShown && <ClickCounterCard clicks={data} />}
         {erorrIsShown && <InvalidUrlCard />}
       </div>
-    </Layout>
   );
 }
 

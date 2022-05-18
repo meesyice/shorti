@@ -8,7 +8,7 @@ import MainNavigation from "./MainNavigation";
 import Footer from "./Footer";
 import classes from "./Layout.module.css";
 
-function Layout(props) {
+function MainLayout(props) {
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [backdropOpen, setBackdropOpen] = useState(false)
 
@@ -46,4 +46,4 @@ function Layout(props) {
   );
 }
 
-export default Layout;
+export default MainLayout;
