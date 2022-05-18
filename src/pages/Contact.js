@@ -1,10 +1,8 @@
 import classes from "./Pages.module.css";
-import Layout from "../components/layout/Layout";
 import ContactForm from "../components/forms/ContactForm";
 
 function Contact() {
   return (
-    <Layout>
       <section>
         <h3
           className={classes.report}
@@ -18,7 +16,6 @@ function Contact() {
         </h3>
         <ContactForm />
       </section>
-    </Layout>
   );
 }
 

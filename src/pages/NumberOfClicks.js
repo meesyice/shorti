@@ -1,9 +1,8 @@
 import classes from "./Pages.module.css";
-import Card from "../components/ui/Card";
+import Card from "../components/cards/Card";
 import NumberOfClicksForm from "../components/forms/NumberOfClicksForm";
-import InvalidUrlCard from "./cards/InavlidUrlCard";
-import ClickCounterCard from "./cards/ClickCounterCard";
-import Layout from "../components/layout/Layout";
+import InvalidUrlCard from "../components/cards/InavlidUrlCard";
+import ClickCounterCard from "../components/cards/ClickCounterCard";
 import axios from "axios";
 import SERVER_ENDPOINT from "../api";
 import { useState } from "react";
@@ -16,7 +15,7 @@ function NumberOfClicks() {
   async function getClicksHandler(numberOfClicksData) {
     const payload = JSON.stringify(numberOfClicksData);
     await axios
-      .post(SERVER_ENDPOINT() + "/clicks/", payload)
+      .post(SERVER_ENDPOINT() + "api/clicks/", payload)
       .then((response) => {
         DisplayCardHandler();
         setData(response.data);
@@ -34,7 +33,6 @@ function NumberOfClicks() {
     setCardIsShown(true);
   }
   return (
-    <Layout>
       <div>
         <Card>
           <section>
@@ -54,7 +52,6 @@ function NumberOfClicks() {
         {cardIsShown && <ClickCounterCard clicks={data} />}
         {erorrIsShown && <InvalidUrlCard />}
       </div>
-    </Layout>
   );
 }
 

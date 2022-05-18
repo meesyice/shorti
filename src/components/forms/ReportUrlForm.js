@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 import classes from "./Form.module.css";
-import Card from "../ui/Card";
+import Card from "../cards/Card";
 
 function ReportUrlForm() {
   const maliciousUrlInputRef = useRef();

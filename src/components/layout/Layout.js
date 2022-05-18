@@ -6,11 +6,9 @@ import Backdrop from "../mobile/Backdrop/Backdrop";
 import SideDrawer from "../mobile/SideDrawer/SideDrawer";
 import MainNavigation from "./MainNavigation";
 import Footer from "./Footer";
-import MobileFooter from "../mobile/MobileFooter/MobileFooter";
-
 import classes from "./Layout.module.css";
 
-function Layout(props) {
+function MainLayout(props) {
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [backdropOpen, setBackdropOpen] = useState(false)
 
@@ -41,11 +39,11 @@ function Layout(props) {
           <main className={classes.main} style={{ marginTop: "64px" }}>
             {props.children}
           </main>
-          <MobileFooter />
+          <Footer />
         </div>
       </MobileView>
     </>
   );
 }
 
-export default Layout;
+export default MainLayout;

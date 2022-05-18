@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import classes from "./Footer.module.css";
 
 function Footer() {
@@ -7,15 +8,11 @@ function Footer() {
       <div>
         <ul>
           <li>
-            <Link to="/">URL Shortner</Link>
+            <a href="https://github.com/meesyice/shorti" target="_blank" rel="noopener noreferrer">Source</a>
           </li>
           <li>|</li>
           <li>
-            <Link to="/ClickTracker">URL Click Tracker</Link>
-          </li>
-          <li>|</li>
-          <li>
-            <Link to="/ReportUrl">Report Malicious URL</Link>
+            <Link to="/Contact">Contact</Link>
           </li>
           <li>|</li>
           <li>
@@ -25,12 +22,8 @@ function Footer() {
           <li>
             <Link to="/Privacy">Privacy</Link>
           </li>
-          <li>|</li>
-          <li>
-            <Link to="/Contact">Contact</Link>
-          </li>
         </ul>
-        <div>© 2021 Shorti.xyz - Tool to shorten long URLs.</div>
+        <div>© 2022 Shorti.xyz - Tool to shorten long URLs.</div>
         <div>Made with <span className={classes.heart}>&#10084;</span> in Amman</div>
       </div>
     </footer>
