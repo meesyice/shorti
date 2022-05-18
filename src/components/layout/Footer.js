@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import classes from "./Footer.module.css";
 
 function Footer() {
+  const year = new Date().getFullYear();
   return (
     <footer className={classes.Footer}>
       <div>
@@ -23,7 +24,7 @@ function Footer() {
             <Link to="/Privacy">Privacy</Link>
           </li>
         </ul>
-        <div>© 2022 Shorti.xyz - Tool to shorten long URLs.</div>
+        <div>© {year} Shorti.xyz - Tool to shorten long URLs.</div>
         <div>Made with <span className={classes.heart}>&#10084;</span> in Amman</div>
       </div>
     </footer>
