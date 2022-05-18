@@ -10,7 +10,7 @@ import classes from "./Layout.module.css";
 
 function MainLayout(props) {
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
-  const [backdropOpen, setBackdropOpen] = useState(false)
+  const [backdropOpen, setBackdropOpen] = useState(false);
 
   function drawerToggelClickHandler() {
     setBackdropOpen(!backdropOpen);
@@ -27,7 +27,9 @@ function MainLayout(props) {
       <BrowserView>
         <div>
           <MainNavigation />
-          <main className={classes.main}>{props.children}</main>
+          <main className={classes.main}>
+            {props.children}
+          </main>
           <Footer />
         </div>
       </BrowserView>

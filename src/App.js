@@ -8,10 +8,17 @@ import Redirect from "./pages/Redirect";
 import Privacy from "./pages/extra/Privacy";
 import Terms from "./pages/extra/Terms";
 import MainLayout from "./components/layout/Layout" ;
+import { createContext } from "react";
 
+const globalState = {
+  darkmode: false,
+}
+
+const globalStateContext = createContext(globalState);
 
 function App() {
   return (
+    <globalStateContext.Provider value={globalState}>
       <Switch>
         <RouteWrapper exact path="/" component={UrlShortner} layout={MainLayout}/>
         <RouteWrapper exact path="/home" component={UrlShortner} layout={MainLayout}/>
@@ -22,6 +29,7 @@ function App() {
         <RouteWrapper exact path="/Terms" component={Terms} layout={MainLayout}/>
         <Route exact path="/:shorti" component={Redirect} />
       </Switch>
+    </globalStateContext.Provider>
   );
 }
 

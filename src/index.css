@@ -18,6 +18,10 @@ body {
   height: 100%;
 }
 
+body.dark {
+  background-color: #242526;
+}
+
 h1 {
   padding-top: 1.1rem;
   margin-bottom: 0.0rem;

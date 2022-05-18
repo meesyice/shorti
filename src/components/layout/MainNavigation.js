@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import useDarkMode from "../../hooks/useDarkMode";
 
 import classes from "./MainNavigation.module.css";
 
 function MainNavigation() {
+  const [darkMode, setDarkMode] = useDarkMode();
   return (
     <header className={classes.header}>
       <div className={classes.logo}>
@@ -18,6 +20,9 @@ function MainNavigation() {
           </li>
           <li>
             <Link to="/ReportUrl">Report Malicious URL</Link>
+          </li>
+          <li>
+            <button onClick={() => setDarkMode(!darkMode)}>DM</button>
           </li>
         </ul>
       </nav>

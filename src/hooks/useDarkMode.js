@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 
 function useDarkMode() {
-  const [darkMode, setDarkMode] = useState(false);
+  const preference = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const [darkMode, setDarkMode] = useState(preference);
+  const jsonDM = JSON.stringify(darkMode);
+
+  localStorage.setItem("shorti-dark-mode", jsonDM);
 
   useEffect(() => {
     const json = localStorage.getItem("shorti-dark-mode");
