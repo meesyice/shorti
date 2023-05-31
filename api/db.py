@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 def connect():
-    db = sqlite3.connect('andy.db')
+    db = sqlite3.connect('data/andy.db')
     dbcursor = db.cursor()
     return (db, dbcursor)
 
