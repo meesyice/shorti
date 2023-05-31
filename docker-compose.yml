@@ -1,0 +1,46 @@
+---
+version: "3.2"
+
+services:
+  backend:
+    build: ./api/
+    image: shorti/backend
+    volumes:
+      - "./data:/app/data:rw"
+    networks:
+      - app
+
+  frontend:
+    build: .
+    image: shorti/frontend
+    networks:
+      - app
+
+  nginx:
+    image: nginx:1.23.3-alpine
+    restart: always
+    volumes:
+      - "certbot:/etc/letsencrypt/:ro"
+      - "./conf/nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
+      - "./conf/nginx/dhparam.pem:/etc/nginx/dhparam.pem:ro"
+      - "./conf/nginx/conf.d/:/etc/nginx/conf.d/:ro"
+      - "./conf/nginx/include/:/etc/nginx/include/:ro"
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - app
+
+  certbot:
+    image: ghcr.io/chrisbraucker/rehydrated:latest
+    env_file: env/certbot
+    command: "--cron --config /letsencrypt/config --domain '${DOMAIN}' --hook hooks/cloudflare.sh --out /letsencrypt/"
+    volumes:
+      - "certbot:/letsencrypt/:rw"
+
+networks:
+  app:
+
+
+volumes:
+  certbot:
